@@ -23,6 +23,7 @@ examples/picture2d/*.bin
 examples/picture2d/*.png
 examples/picture2d/rendered/
 venv
+.venv/
 
 *.gv
 *.svg
