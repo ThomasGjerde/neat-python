@@ -14,6 +14,7 @@ aggregation_options     = sum
 # node bias options
 bias_init_mean          = 0.0
 bias_init_stdev         = 1.0
+bias_init_type          = gaussian
 bias_max_value          = 30.0
 bias_min_value          = -30.0
 bias_mutate_power       = 0.5
@@ -47,6 +48,7 @@ num_outputs             = 1
 # node response options
 response_init_mean      = 1.0
 response_init_stdev     = 0.0
+response_init_type      = gaussian
 response_max_value      = 30.0
 response_min_value      = -30.0
 response_mutate_power   = 0.0
@@ -56,6 +58,7 @@ response_replace_rate   = 0.0
 # connection weight options
 weight_init_mean        = 0.0
 weight_init_stdev       = 1.0
+weight_init_type        = gaussian
 weight_max_value        = 30
 weight_min_value        = -30
 weight_mutate_power     = 0.5
