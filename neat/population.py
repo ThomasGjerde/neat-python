@@ -1,7 +1,5 @@
 """Implements the core evolution algorithm."""
-
-from itertools import count
-
+from neat.iter_util import count
 from neat.math_util import mean
 from neat.reporting import ReporterSet
 
