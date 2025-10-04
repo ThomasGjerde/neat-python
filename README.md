@@ -5,7 +5,7 @@ This repository is a fork of [neat-python](https://github.com/CodeReclaimers/nea
 I created this fork to apply some bugfixes for my own use.
 I do not plan to actively maintain this fork.
 
-The original README follows below for reference.
+The original README follows below for reference (with a few minor changes).
 
 ## About ##
 
@@ -18,7 +18,7 @@ For further information regarding general concepts and theory, please see the
 Florida (now somewhat dated), or the [publications page](https://www.kenstanley.net/papers) of his current website.
 
 `neat-python` is licensed under the [3-clause BSD license](https://opensource.org/licenses/BSD-3-Clause).  It is
-currently only supported on Python 3.6 through 3.11, and pypy3.
+currently only supported on Python 3.10 through 3.13, and pypy3.
 
 ## Getting Started ##
 
