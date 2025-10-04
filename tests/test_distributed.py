@@ -6,20 +6,13 @@ import platform
 import random
 import socket
 import sys
+import threading
 import unittest
-
-try:
-    import threading
-except ImportError:
-    import dummy_threading as threading
-
-    HAVE_THREADING = False
-else:
-    HAVE_THREADING = True
 
 import neat
 from neat.distributed import chunked, MODE_AUTO, MODE_PRIMARY, MODE_SECONDARY, ModeError, _STATE_RUNNING
 
+HAVE_THREADING = True
 ON_PYPY = platform.python_implementation().upper().startswith("PYPY")
 
 

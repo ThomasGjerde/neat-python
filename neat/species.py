@@ -1,7 +1,6 @@
 """Divides the population into species based on genomic distances."""
-from itertools import count
-
 from neat.config import ConfigParameter, DefaultClassConfig
+from neat.iter_util import count
 from neat.math_util import mean, stdev
 
 

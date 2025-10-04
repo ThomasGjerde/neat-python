@@ -5,11 +5,10 @@ asexual reproduction from parents.
 
 import math
 import random
-from itertools import count
 
 from neat.config import ConfigParameter, DefaultClassConfig
+from neat.iter_util import count
 from neat.math_util import mean
-
 
 # TODO: Provide some sort of optional cross-species performance criteria, which
 # are then used to control stagnation and possibly the mutation rate

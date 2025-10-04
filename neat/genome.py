@@ -1,7 +1,6 @@
 """Handles genomes (individuals in the population)."""
 import copy
 import sys
-from itertools import count
 from random import choice, random, shuffle
 
 from neat.activations import ActivationFunctionSet
@@ -10,7 +9,7 @@ from neat.config import ConfigParameter, write_pretty_params
 from neat.genes import DefaultConnectionGene, DefaultNodeGene
 from neat.graphs import creates_cycle
 from neat.graphs import required_for_output
-
+from neat.iter_util import count
 
 class DefaultGenomeConfig(object):
     """Sets up and holds configuration information for the DefaultGenome class."""
