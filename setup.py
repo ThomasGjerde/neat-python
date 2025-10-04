@@ -4,10 +4,6 @@ setup(
     name='neat-python',
     version='0.93',
     author='Alan Mcintyre, Cesar Gomes Miguel, Carolina Feher da Silva, Marcio Lobo Netto',
-    author_email='alan@codereclaimers.com',
-    maintainer='Alan McIntyre',
-    maintainer_email='alan@codereclaimers.com',
-    url='https://github.com/CodeReclaimers/neat-python',
     license="BSD",
     description='A NEAT (NeuroEvolution of Augmenting Topologies) implementation',
     long_description='Python implementation of NEAT (NeuroEvolution of Augmenting Topologies), a method ' +
