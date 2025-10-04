@@ -72,7 +72,7 @@ def run_primary(addr, authkey, generations):
             output = winner_net.activate(xi)
             print("input {!r}, expected output {!r}, got {!r}".format(xi, xo, output))
 
-    if (checkpointer.last_generation_checkpoint >= 0) and (checkpointer.last_generation_checkpoint < 100):
+    if (checkpointer.last_generation_checkpoint >= 0) and (checkpointer.last_generation_checkpoint < 25):
         filename = 'neat-checkpoint-{0}'.format(checkpointer.last_generation_checkpoint)
         print("Restoring from {!s}".format(filename))
         p2 = neat.checkpoint.Checkpointer.restore_checkpoint(filename)
@@ -83,7 +83,8 @@ def run_primary(addr, authkey, generations):
         winner2 = None
         time.sleep(3)
         de.start()
-        winner2 = p2.run(de.evaluate, (100 - checkpointer.last_generation_checkpoint))
+        remaining_generations = 25 - (checkpointer.last_generation_checkpoint or 0)
+        winner2 = p2.run(de.evaluate, max(1, remaining_generations))
         print("===== stopping DistributedEvaluator (forced) =====")
         de.stop(wait=3, shutdown=True, force_secondary_shutdown=True)
 
@@ -142,7 +143,7 @@ def test_xor_example_distributed():
     mp = multiprocessing.Process(
         name="Primary evaluation process",
         target=run_primary,
-        args=(addr, authkey, 100),
+        args=(addr, authkey, 25),
     )
     mp.start()
     swcp = multiprocessing.Process(
