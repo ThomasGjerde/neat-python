@@ -62,7 +62,6 @@ import time
 import warnings
 from argparse import Namespace
 from multiprocessing import managers
-import threading
 
 # Some of this code is based on
 # http://eli.thegreenplace.net/2012/01/24/distributed-computing-in-python-with-multiprocessing
@@ -466,15 +465,7 @@ class DistributedEvaluator(object):
     def _secondary_loop(self, reconnect=False):
         """The worker loop for the secondary nodes."""
         if self.num_workers > 1:
-            # Try to use forkserver if in a multi-threaded environment
-            if threading.active_count() > 1:
-                try:
-                    ctx = multiprocessing.get_context('forkserver')
-                    pool = ctx.Pool(self.num_workers)
-                except (RuntimeError, AttributeError):
-                    pool = multiprocessing.Pool(self.num_workers)
-            else:
-                pool = multiprocessing.Pool(self.num_workers)
+            pool = multiprocessing.Pool(self.num_workers)
         else:
             pool = None
         should_reconnect = True
