@@ -1,5 +1,7 @@
 import os
 
+import pytest
+
 import neat
 from neat import aggregations
 
@@ -67,7 +69,8 @@ def test_add_minabs():
                          config_path)
     config.genome_config.add_aggregation('minabs', minabs_aggregation)
     assert config.genome_config.aggregation_function_defs.get('minabs') is not None
-    assert config.genome_config.aggregation_function_defs['minabs'] is not None
+    with pytest.warns(DeprecationWarning, match="Use get, not indexing"):
+        assert config.genome_config.aggregation_function_defs['minabs'] is not None
     assert config.genome_config.aggregation_function_defs.is_valid('minabs')
 
 
@@ -96,7 +99,8 @@ def test_function_set():
     assert not s.is_valid('foo')
 
     try:
-        ignored = s['foo']
+        with pytest.warns(DeprecationWarning, match="Use get, not indexing"):
+            ignored = s['foo']
     except TypeError:
         pass
     else:
