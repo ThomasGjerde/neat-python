@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='neat-python',
-    version='0.93',
+    version='0.94',
     author='Alan Mcintyre, Cesar Gomes Miguel, Carolina Feher da Silva, Marcio Lobo Netto',
     license="BSD",
     description='A NEAT (NeuroEvolution of Augmenting Topologies) implementation',
