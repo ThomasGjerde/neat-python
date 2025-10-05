@@ -30,3 +30,4 @@ venv
 build
 dist
 neat_python.egg-info
+tests/checkpoints/

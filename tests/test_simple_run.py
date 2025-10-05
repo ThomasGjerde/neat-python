@@ -2,6 +2,7 @@ import multiprocessing
 import os
 
 import neat
+from tests.config import DEFAULT_CHECKPOINT_PREFIX
 
 VERBOSE = True
 
@@ -33,7 +34,7 @@ def test_serial():
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1, 5))
+    p.add_reporter(neat.Checkpointer(1, 5, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 19 generations.
     p.run(eval_dummy_genomes_nn, 19)
@@ -100,7 +101,7 @@ def test_serial_random():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(15, 1))
+    p.add_reporter(neat.Checkpointer(15, 1, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 45 generations.
     p.run(eval_dummy_genomes_nn, 45)
@@ -136,7 +137,7 @@ def test_serial3():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(15, 1))
+    p.add_reporter(neat.Checkpointer(15, 1, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 45 generations.
     p.run(eval_dummy_genomes_nn, 45)
@@ -172,7 +173,7 @@ def test_serial4():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(15, 1))
+    p.add_reporter(neat.Checkpointer(15, 1, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 45 generations.
     p.run(eval_dummy_genomes_nn, 45)
@@ -208,7 +209,7 @@ def test_serial5():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(15, 1))
+    p.add_reporter(neat.Checkpointer(15, 1, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 45 generations.
     p.run(eval_dummy_genomes_nn, 45)
@@ -357,7 +358,7 @@ def test_parallel():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1, 5))
+    p.add_reporter(neat.Checkpointer(1, 5, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 19 generations.
     pe = neat.ParallelEvaluator(1 + multiprocessing.cpu_count(), eval_dummy_genome_nn)
@@ -382,7 +383,7 @@ def test_threaded_evaluation():
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1, 5))
+    p.add_reporter(neat.Checkpointer(1, 5, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 19 generations.
     pe = neat.ThreadedEvaluator(4, eval_dummy_genome_nn)
@@ -476,7 +477,7 @@ def test_run_nn_recurrent():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1, 5))
+    p.add_reporter(neat.Checkpointer(1, 5, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 19 generations.
     p.run(eval_dummy_genomes_nn_recurrent, 19)
@@ -540,7 +541,7 @@ def test_run_ctrnn():
     p.add_reporter(neat.StdOutReporter(VERBOSE))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1, 5))
+    p.add_reporter(neat.Checkpointer(1, 5, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 19 generations.
     p.run(eval_dummy_genomes_ctrnn, 19)
@@ -621,7 +622,7 @@ def test_run_iznn():
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(2, 10))
+    p.add_reporter(neat.Checkpointer(2, 10, filename_prefix=DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for up to 20 generations.
     p.run(eval_dummy_genomes_iznn, 20)

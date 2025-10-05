@@ -11,6 +11,7 @@ import unittest
 
 import neat
 from neat.distributed import chunked, MODE_AUTO, MODE_PRIMARY, MODE_SECONDARY, ModeError, _STATE_RUNNING
+from tests.config import DEFAULT_CHECKPOINT_PREFIX
 
 HAVE_THREADING = True
 ON_PYPY = platform.python_implementation().upper().startswith("PYPY")
@@ -385,7 +386,7 @@ def run_primary(addr, authkey, generations):
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(max(1, int(generations / 3)), 5))
+    p.add_reporter(neat.Checkpointer(max(1, int(generations / 3)), 5, DEFAULT_CHECKPOINT_PREFIX))
 
     # Run for the specified number of generations.
     de = neat.DistributedEvaluator(
